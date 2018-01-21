@@ -1,0 +1,60 @@
+{% extends 'multiband/base.html' %} {% block content %}
+
+<main class="ui container" style="padding: 2em 0 2em 0;">
+
+    <div class="ui segment">
+        <h2>Landsat 7</h2>
+        <div class="ui six cards">
+            {% for i in range(1, 7) %} {% if i == 6 %}
+            <div class="card">
+                <div class="image">
+                    <img class="ui image" src="{{ url_for('static', filename='landsat7/gb' + (i+1)|string + '.jpg') }}" alt="Landsat7">
+                </div>
+                <div class="content">
+                    <div class="header">Band {{ (i + 1) }}</div>
+                </div>
+            </div>
+            {% else %}
+            <div class="card">
+                <div class="image">
+                    <img class="ui image" src="{{ url_for('static', filename='landsat7/gb' + i|string + '.jpg') }}" alt="Landsat7">
+                </div>
+                <div class="content">
+                    <div class="header">Band {{ i }}</div>
+                </div>
+            </div>
+            {% endif %} {% endfor %}
+        </div>
+    </div>
+    <br>
+
+    <div class="ui container">
+        <table class="ui stackable table">
+            <thead class="center aligned">
+                <tr>
+                    <th class="two wide">Jumlah Cluster</th>
+                    <th class="ten wide">Hasil Clustering</th>
+                    <th class="four wide">Hasil Image Multiband</th>
+                </tr>
+            </thead>
+            <tbody class="center aligned">
+                {% for i in cluster %}
+                <tr>
+                    <td>
+                        <h2>{{ i }}</h2>
+                    </td>
+                    <td>
+                        <img class="ui centered medium image" src="{{ clusterimg[i-2] }}" alt="Cluster" />
+                    </td>
+                    <td>
+                        <img class="ui centered tiny image" src="{{ resultimg[i-2] }}" alt="MIC" />
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+{% endblock %}

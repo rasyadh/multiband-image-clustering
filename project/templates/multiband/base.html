@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>{{ title }} - Multiband Image Clustering</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="MIC" />
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='multiband/logo-multiband.png') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/semantic.min.css') }}" />
+</head>
+
+<body>
+
+    <header class="ui blue inverted borderless secondary menu">
+        <div class="ui container">
+            <a class="item header" href="/multiband">
+                <h3 style="color: white">Multiband Image Clustering</h3>
+            </a>
+            <a class="item" href="/multiband/process">
+                Proses Clustering
+            </a>
+            <div class="right item">
+                <a class="item" href="/" data-tooltip="RSDH" data-inverted="" data-position="right center">
+                    <img class="ui image" src="{{ url_for('static', filename='img/logo.png') }}" alt="RSDH Logo">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    {% block content %} {% endblock %}
+
+    <script src="{{url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{url_for('static', filename='js/semantic.min.js') }}"></script>
+</body>
+
+</html>
